@@ -31,8 +31,8 @@ export const CardSection = styled.div`
 
   img {
     margin-right: 8px;
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
   }
 
   .nota {
@@ -44,7 +44,7 @@ export const CardSection = styled.div`
       background-color: transparent;
       color: ${cores.fonte};
       font-size: 18px;
-      padding: 2px 2px 0 0;
+      padding: 2px 0 0 0;
     }
   }
 `
