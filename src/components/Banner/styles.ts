@@ -16,19 +16,17 @@ export const Imagem = styled.div`
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
   }
 
   .container {
     display: block;
-    z-index: 2;
   }
 `
 export const TagOne = styled.div`
   ${TagContainer} {
     position: absolute;
     top: 24px;
-    z-index: 2;
+    z-index: 1;
     background-color: transparent;
     font-size: 32px;
     font-weight: lighter;
@@ -38,7 +36,7 @@ export const TagTwo = styled.div`
   ${TagContainer} {
     position: absolute;
     top: 200px;
-    z-index: 2;
+    z-index: 1;
     background-color: transparent;
     color: ${cores.fundo3};
     font-size: 32px;

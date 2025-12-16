@@ -19,9 +19,13 @@ export const Infos = styled.div`
   position: absolute;
   top: 22px;
   right: 20px;
+
+  ${TagContainer} {
+    margin-left: 8px;
+  }
 `
 export const CardSections = styled.div`
-  border: 2px solid ${cores.fonte};
+  border: 1px solid ${cores.fonte};
   border-top: none;
 `
 export const CardSection = styled.div`
@@ -31,8 +35,8 @@ export const CardSection = styled.div`
 
   img {
     margin-right: 8px;
-    width: 21px;
-    height: 21px;
+    width: 22px;
+    height: 22px;
   }
 
   .nota {
@@ -44,7 +48,7 @@ export const CardSection = styled.div`
       background-color: transparent;
       color: ${cores.fonte};
       font-size: 18px;
-      padding: 2px 2px 0 0;
+      padding: 2px 4px 0 0;
     }
   }
 `
