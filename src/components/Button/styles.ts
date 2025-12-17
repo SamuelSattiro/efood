@@ -19,7 +19,7 @@ export const ButtonLink = styled(Link)`
   padding: 4px 6px;
   font-size: 14px;
   font-weight: bold;
-  display: inline-block;
+  align-self: flex-start;
   border: none;
   cursor: pointer;
   margin: 8px;

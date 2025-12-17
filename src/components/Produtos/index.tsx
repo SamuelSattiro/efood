@@ -1,22 +1,27 @@
 import Produto from '../Produto'
 import { List } from './styles'
-import Products from '../../models/Products'
+import { Product } from '../../models/Product'
 
 export type Props = {
-  produtos: Products[]
+  produtos: Product[]
+  onProdutoClick: (produto: Product) => void
+  aberto: boolean
 }
 
-const Produtos = ({ produtos }: Props) => (
+const Produtos = ({ produtos, onProdutoClick, aberto }: Props) => (
   <div>
     <div className="container">
       <List>
         {produtos.map((produto) => (
-          <Produto
-            key={produto.id}
-            description={produto.description}
-            image={produto.image}
-            title={produto.title}
-          />
+          <li key={produto.id}>
+            <Produto
+              description={produto.descricao}
+              image={produto.foto}
+              title={produto.nome}
+              onClick={() => onProdutoClick(produto)}
+              aberto={aberto}
+            />
+          </li>
         ))}
       </List>
     </div>

@@ -4,7 +4,8 @@ export const cores = {
   fonte: '#E66767',
   fundo: '#FFEBD9',
   fundo2: '#FFF8F2',
-  fundo3: '#FFFFFF'
+  fundo3: '#FFFFFF',
+  pretoTrans: 'rgba(0, 0, 0, 0.80)'
 }
 
 export const GlobalStyle = createGlobalStyle`

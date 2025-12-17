@@ -1,18 +1,35 @@
-import { Botao, Card, Descricao, Titulo } from './styles'
+import Button from '../Button'
+import { Card, Descricao, Titulo } from './styles'
 
-export type Props = {
+type Props = {
   image: string
   title: string
   description: string
+  onClick: () => void
+  aberto: boolean
 }
 
-const Produto = ({ image, title, description }: Props) => (
-  <Card>
-    <img src={image} alt={title} />
-    <Titulo>{title}</Titulo>
-    <Descricao>{description}</Descricao>
-    <Botao type="submit">Adicionar ao carrinho</Botao>
-  </Card>
-)
+const Produto = ({ image, title, description, onClick, aberto }: Props) => {
+  const getDescription = (description: string) => {
+    if (description.length > 85) {
+      return description.slice(0, 82) + '...'
+    }
+    return description
+  }
+  return (
+    <Card className={aberto ? 'visivel' : ''}>
+      <img src={image} alt={title} />
+      <Titulo>{title}</Titulo>
+      <Descricao>{getDescription(description)}</Descricao>
+      <Button
+        onClick={onClick}
+        type="button"
+        title="mais detalhes sobre o prato"
+      >
+        Mais detalhes
+      </Button>
+    </Card>
+  )
+}
 
 export default Produto

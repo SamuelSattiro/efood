@@ -14,12 +14,13 @@ import Button from '../Button'
 export type Props = {
   title: string
   description: string
-  stars: string
+  stars: number
   infos: string[]
   image: string
+  id: number
 }
 
-const Restaurante = ({ title, description, stars, infos, image }: Props) => (
+const Rest = ({ title, description, stars, infos, image, id }: Props) => (
   <Card>
     <img src={image} alt={title} />
     <Infos>
@@ -36,11 +37,11 @@ const Restaurante = ({ title, description, stars, infos, image }: Props) => (
         </div>
       </CardSection>
       <Descricao>{description}</Descricao>
-      <Button type="link" to="/perfil" title="Saiba mais">
+      <Button type="link" to={`/perfil/${id}`} title="Saiba mais">
         Saiba mais
       </Button>
     </CardSections>
   </Card>
 )
 
-export default Restaurante
+export default Rest

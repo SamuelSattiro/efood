@@ -1,29 +1,22 @@
 import Tag from '../Tag'
 import { Imagem, TagOne, TagTwo } from './styles'
-import Banners from '../../models/Banners'
+import { Restaurante } from '../../models/Restaurante'
 
 export type Props = {
-  banners: Banners[]
+  banner: Restaurante
 }
 
-const Banner = ({ banners }: Props) => (
-  <>
-    {banners.map((banner) => (
-      <Imagem
-        key={banner.id}
-        style={{ backgroundImage: `url(${banner.image})` }}
-      >
-        <div className="container">
-          <TagOne>
-            <Tag size="big">{banner.type}</Tag>
-          </TagOne>
-          <TagTwo>
-            <Tag size="big">{banner.title}</Tag>
-          </TagTwo>
-        </div>
-      </Imagem>
-    ))}
-  </>
+const Banner = ({ banner }: Props) => (
+  <Imagem style={{ backgroundImage: `url(${banner.capa})` }}>
+    <div className="container">
+      <TagOne>
+        <Tag size="big">{banner.tipo}</Tag>
+      </TagOne>
+      <TagTwo>
+        <Tag size="big">{banner.titulo}</Tag>
+      </TagTwo>
+    </div>
+  </Imagem>
 )
 
 export default Banner
