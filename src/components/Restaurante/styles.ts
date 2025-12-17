@@ -6,9 +6,10 @@ export const Card = styled.div`
   background-color: ${cores.fundo3};
   position: relative;
   width: 472px;
+  display: flex;
+  flex-direction: column;
 
   img {
-    display: block;
     width: 100%;
     height: 217px;
     object-fit: cover;
@@ -19,10 +20,17 @@ export const Infos = styled.div`
   position: absolute;
   top: 22px;
   right: 20px;
+
+  ${TagContainer} {
+    margin-left: 8px;
+  }
 `
 export const CardSections = styled.div`
   border: 1px solid ${cores.fonte};
   border-top: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `
 export const CardSection = styled.div`
   display: flex;
@@ -62,9 +70,5 @@ export const Descricao = styled.p`
   line-height: 22px;
   display: block;
   margin-top: 16px;
+  flex: 1;
 `
-// export const Infos = styled.div`
-//   position: absolute;
-//   top: 16px;
-//   right: 16px;
-// `

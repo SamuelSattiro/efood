@@ -10,4 +10,5 @@ export const List = styled.ul`
   gap: 50px;
   margin-top: 80px;
   margin-bottom: 120px;
+  align-items: stretch;
 `
