@@ -1,8 +1,11 @@
+import { useDispatch } from 'react-redux'
 import fechar from '../../assets/images/fechar.png'
 import { Product } from '../../models/Product'
 import { formataPreco } from '../../pages/Home'
 import Button from '../Button'
 import { Modal, ModalContent, ModalItems } from './styles'
+
+import { add, open } from '../../store/reducers/cart'
 
 type Props = {
   produto: Product
@@ -11,6 +14,12 @@ type Props = {
 }
 
 const InfoModal = ({ produto, aberto, fecharModal }: Props) => {
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(produto))
+    dispatch(open())
+  }
   return (
     <Modal className={aberto ? 'visivel' : ''} onClick={fecharModal}>
       <ModalContent className="container">
@@ -25,7 +34,11 @@ const InfoModal = ({ produto, aberto, fecharModal }: Props) => {
             <h3>{produto.nome}</h3>
             <p>{produto.descricao}</p>
             <p>{produto.porcao}</p>
-            <Button type="button" title="Adicione o Prato ao carrinho">
+            <Button
+              type="button"
+              title="Adicione o Prato ao carrinho"
+              onClick={addToCart}
+            >
               {`Adicionar ao carrinho ${formataPreco(produto.preco)}`}
             </Button>
           </div>

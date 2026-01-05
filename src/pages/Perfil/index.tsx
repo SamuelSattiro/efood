@@ -3,10 +3,10 @@ import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import Produtos from '../../components/Produtos'
 
-import { useEffect, useState } from 'react'
-import { Restaurante } from '../../models/Restaurante'
+import { useState } from 'react'
 import InfoModal from '../../components/InfoModal'
 import { Product } from '../../models/Product'
+import { useGetRestauranteQuery } from '../../services/api'
 
 const Perfil = () => {
   const [modalAberto, setModalAberto] = useState(false)
@@ -16,37 +16,32 @@ const Perfil = () => {
 
   const { id } = useParams()
 
-  const [restaurante, setRestaurante] = useState<Restaurante>()
+  const { data: restaurante } = useGetRestauranteQuery(id!)
 
-  useEffect(() => {
-    fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurante(res))
-  }, [id])
-
-  if (!restaurante) return <h3>Carregando...</h3>
-
-  return (
-    <>
-      <Header />
-      <Banner banner={restaurante} />
-      <Produtos
-        produtos={restaurante.cardapio}
-        aberto={modalAberto}
-        onProdutoClick={(produto) => {
-          setProdutoSelecionado(produto)
-          setModalAberto(true)
-        }}
-      />
-      {modalAberto && produtoSelecionado && (
-        <InfoModal
-          produto={produtoSelecionado}
+  if (restaurante) {
+    return (
+      <>
+        <Header />
+        <Banner banner={restaurante} />
+        <Produtos
+          produtos={restaurante.cardapio}
           aberto={modalAberto}
-          fecharModal={() => setModalAberto(false)}
+          onProdutoClick={(produto) => {
+            setProdutoSelecionado(produto)
+            setModalAberto(true)
+          }}
         />
-      )}
-    </>
-  )
+        {modalAberto && produtoSelecionado && (
+          <InfoModal
+            produto={produtoSelecionado}
+            aberto={modalAberto}
+            fecharModal={() => setModalAberto(false)}
+          />
+        )}
+      </>
+    )
+  }
+  return <h3>Carregando...</h3>
 }
 
 export default Perfil

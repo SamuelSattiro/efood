@@ -8,6 +8,10 @@ export const Head = styled.div`
   .container {
     display: flex;
     justify-content: space-between;
+
+    .CartItem {
+      padding-top: 80px;
+    }
   }
 
   img {
@@ -20,9 +24,10 @@ export const Links = styled.h3`
   font-size: 18px;
   color: ${cores.fonte};
 `
-// export const Slogan = styled.h1`
-//   font-size: 36px;
-//   font-weight: 900;
-//   width: 539px;
-//   margin: 120px auto 60px auto;
-// `
+export const LinkCart = styled.a`
+  margin-top: 82px;
+  font-weight: bold;
+  font-size: 18px;
+  color: ${cores.fonte};
+  cursor: pointer;
+`
