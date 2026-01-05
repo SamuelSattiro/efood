@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
 import RestaurantesList from '../../components/Restaurantes'
 import Hero from '../../components/Hero'
-import { Restaurante } from '../../models/Restaurante'
+import { useGetFeatureRestaurantesQuery } from '../../services/api'
 
 export const formataPreco = (preco = 0) => {
   return new Intl.NumberFormat('pt-BR', {
@@ -11,20 +10,17 @@ export const formataPreco = (preco = 0) => {
 }
 
 const Home = () => {
-  const [restaurante, setRestaurante] = useState<Restaurante[]>([])
+  const { data: restaurante } = useGetFeatureRestaurantesQuery()
 
-  useEffect(() => {
-    fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurante(res))
-  })
-
-  return (
-    <>
-      <Hero />
-      <RestaurantesList restaurantes={restaurante} />
-    </>
-  )
+  if (restaurante) {
+    return (
+      <>
+        <Hero />
+        <RestaurantesList restaurantes={restaurante} />
+      </>
+    )
+  }
+  return <h3>Carregando...</h3>
 }
 
 export default Home
